@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+        <h1>Marcadores: {{usuario.first_name}} {{usuario.last_name}}</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">No Partido</th>
+                <th scope="col">Fase</th>
+                <th scope="col">Partido</th>
+                <th scope="col">Marcador</th>
+                <th scope="col">Resultado</th>
+                <th scope="col">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for marcador in marcadores_usuario %}
+                <tr>
+                    <td align="center">{{ marcador.nro_partido }}</th>
+                    <td>{{ marcador.nom_fase }}</th>
+                    <td>{{ marcador.equipo1 }} VS {{ marcador.equipo2 }}</td>
+                    <td align="center">{{ marcador.marcador1 }} - {{ marcador.marcador2 }}</td>
+                    <td align="center">{{ marcador.resultado1 }} - {{ marcador.resultado2 }}</td>
+                    <td align="center">{{ marcador.puntos }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>   
+          <a href="{% url 'posiciones' %}">Volver</a>     
+    </body>
+</html>
+{% endblock %}

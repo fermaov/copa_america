@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+        <h1>Finalistas</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Participante</th>
+                <th scope="col">Campeón</th>
+                <th scope="col">Subcampeón</th>
+                <th scope="col">Tercero</th>
+                <th scope="col">Cuarto</th>
+              </tr>
+            </thead>
+            <tbody>              
+                {% for finalista in cuadro_honor %}
+                <tr>
+                    <td>{{ finalista.nom_usuario }}</th>
+                    <td>{{ finalista.nom_campeon }} ({{ finalista.puntos_campeon }} puntos)</th>
+                    <td>{{ finalista.nom_subcampeon }} ({{ finalista.puntos_subcampeon }}  puntos)</th>
+                    <td>{{ finalista.nom_tercero }} ({{ finalista.puntos_tercero }}  puntos)</td>
+                    <td>{{ finalista.nom_cuarto }} ({{ finalista.puntos_cuarto }}  puntos)</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>        
+    </body>
+</html>
+{% endblock %}

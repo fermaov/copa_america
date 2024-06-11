@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+        <h1>Mis marcadores</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">No Partido</th>
+                <th scope="col">Fase</th>
+                <th scope="col">No. Fecha</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Partido</th>
+                <th scope="col">Marcador</th>
+                <th scope="col">Modificar</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for marcador in mis_marcadores %}
+                <tr>
+                    <td>{{ marcador.nro_partido }}</th>
+                    <td>{{ marcador.nom_fase }}</th>
+                      <td>{{ marcador.nro_fecha }}</th>
+                    <td>{{ marcador.fecha }}</th>
+                    <td>{{ marcador.equipo1 }} VS {{ marcador.equipo2 }}</td>
+                    <td align="center">{{ marcador.marcador1 }} - {{ marcador.marcador2 }}</td>
+                    {% if marcador.id == None %}
+                      <td align="center"><a href="{% url 'marcador_new' nro_partido=marcador.nro_partido %}">Registrar</a></td>
+                    {% else %}
+                      <td align="center"><a href="{% url 'marcador_edit' pk=marcador.id %}">Modificar</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>        
+    </body>
+</html>
+{% endblock %}

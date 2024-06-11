@@ -1,0 +1,28 @@
+{% load static %}
+<html>
+    <head>
+        <title>Polla Mundialista</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1>Polla - Copa América 2024</h1>
+            <h4>
+                <a href="{% url 'posiciones' %}" class="top-menu">Posiciones</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'marcadores' %}" class="top-menu">Resultados</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mis_marcadores' %}" class="top-menu">Mis Marcadores</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'posiciones_playoff' %}" class="top-menu">PlayOff</a>&nbsp;&nbsp;&nbsp;
+                <!--a href="{% url 'cuadro_honor' %}" class="top-menu">Finalistas</a-->
+            </h4>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block contenido %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

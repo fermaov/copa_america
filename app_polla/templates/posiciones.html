@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+        <h1>Tabla de Posiciones General</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Posición</th>
+                <th scope="col">Participante</th>
+                <th scope="col">Puntos</th>
+                <th scope="col">Aciertos</th>
+                <!--th scope="col">3 Puntos</th-->
+                <!--th scope="col">0 Puntos</th-->
+                <th scope="col">Marcadores</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for posicion in posiciones %}
+                <tr>
+                    <td align="center">{{posicion.num }}</th>
+                    <td>{{ posicion.nom_usuario }}</th>
+                    <td align="center">{{ posicion.puntos }}</td>
+                    <td align="center">{{ posicion.puntos_5 }}</td>
+                    <!--td align="center">{{ posicion.puntos_3 }}</td-->
+                    <!--td align="center">{{ posicion.puntos_0 }}</td-->
+                    <td align="center"><a href="{% url 'marcadores_usuario' pk=posicion.usuario %}">Ver</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>        
+    </body>
+</html>
+{% endblock %}

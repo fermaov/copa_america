@@ -1,0 +1,8 @@
+*.pyc
+*~
+__pycache__
+entorno_polla
+
+/static
+.DS_Store
+git.txt
