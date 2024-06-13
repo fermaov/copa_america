@@ -47,7 +47,6 @@ def login_view(request):
 
 def mis_marcadores(request):
     usuario = request.user.id
-    #mis_marcadores = ViewMarcador.objects.all()
     mis_marcadores = ViewMarcador.objects.filter(Q(usuario=usuario) | Q(usuario=None)).order_by('nro_partido')
     return render(request,'mis_marcadores.html',{'mis_marcadores': mis_marcadores})    
 

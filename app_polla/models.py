@@ -104,10 +104,13 @@ class ViewCalculo(models.Model):
     resultado2 = models.IntegerField(blank=True, null=True)
     dif1 = models.TextField(blank=True, null=True)  
     dif2 = models.TextField(blank=True, null=True)  
-    ten1 = models.TextField(blank=True, null=True)  
-    ten2 = models.TextField(blank=True, null=True)  
+    difr = models.TextField(blank=True, null=True)  
+    difm = models.TextField(blank=True, null=True)  
+    tendencia = models.TextField(blank=True, null=True)  
+    goles1 = models.TextField(blank=True, null=True)  
+    goles2 = models.TextField(blank=True, null=True)  
+    difgol = models.TextField(blank=True, null=True)  
     puntos = models.TextField(blank=True, null=True)  
-    aciertos = models.TextField(blank=True, null=True)  
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
