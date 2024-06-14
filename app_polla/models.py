@@ -33,6 +33,7 @@ class Partido(models.Model):
     equipo2 = models.ForeignKey('Equipo', models.DO_NOTHING, db_column='equipo2', related_name='equipo2',)
     marcador1 = models.IntegerField(blank=True, null=True)
     marcador2 = models.IntegerField(blank=True, null=True)
+    estado = models.ForeignKey('Estado', models.DO_NOTHING, db_column='estado', related_name='estado',)
 
     def __str__(self):
         return "%s VS %s" % (self.equipo1, self.equipo2)
@@ -41,6 +42,17 @@ class Partido(models.Model):
         managed = False
         db_table = 'partido'
         ordering = ['nro_partido']
+        
+class Estado(models.Model):
+    id_estado = models.IntegerField(primary_key=True)
+    nom_estado = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.estado
+    class Meta:
+        managed = False
+        db_table = 'estado'
+        ordering = ['id_estado']
         
 class ViewPosiciones(models.Model):
     num = models.BigIntegerField(primary_key=True)
@@ -88,6 +100,7 @@ class ViewMarcador(models.Model):
     resultado1 = models.IntegerField(blank=True, null=True)
     resultado2 = models.IntegerField(blank=True, null=True)
     abierto = models.IntegerField(blank=True, null=True)
+    fecha_mod = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
@@ -176,6 +189,7 @@ class Marcador(models.Model):
     nro_partido = models.ForeignKey('Partido', models.DO_NOTHING, db_column='nro_partido')
     marcador1 = models.IntegerField(blank=True, null=True)
     marcador2 = models.IntegerField(blank=True, null=True)
+    fecha_mod = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return "%s -->> %s" % (self.usuario, self.nro_partido)

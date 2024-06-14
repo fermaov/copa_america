@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.db.models import Q
 from .forms import MarcadorForm
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 def posiciones(request):
     posiciones = ViewPosiciones.objects.all()
@@ -60,6 +61,7 @@ def marcador_new(request, nro_partido):
             marcador = form.save(commit=False)
             marcador.usuario = usuario
             marcador.nro_partido = partido
+            marcador.fecha_mod = timezone.now()
             marcador.save()
             # Redirige a una página de éxito o a donde desees después de guardar los datos
             return redirect('mis_marcadores')
@@ -73,6 +75,7 @@ def marcador_edit(request, pk):
         form = MarcadorForm(request.POST, instance=marcador)
         if form.is_valid():
             marcador = form.save(commit=False)
+            marcador.fecha_mod = timezone.now()
             marcador.save()
             return redirect('mis_marcadores')
     else:
