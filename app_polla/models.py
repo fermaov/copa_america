@@ -67,6 +67,7 @@ class ViewPartido(models.Model):
     equipo2 = models.CharField(max_length=20, blank=True, null=True)
     marcador1 = models.TextField(blank=True, null=True)
     marcador2 = models.TextField(blank=True, null=True)
+    abierto = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
@@ -86,6 +87,7 @@ class ViewMarcador(models.Model):
     marcador2 = models.TextField(blank=True, null=True)
     resultado1 = models.IntegerField(blank=True, null=True)
     resultado2 = models.IntegerField(blank=True, null=True)
+    abierto = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
@@ -102,6 +104,7 @@ class ViewCalculo(models.Model):
     marcador2 = models.TextField(blank=True, null=True)  
     resultado1 = models.IntegerField(blank=True, null=True)
     resultado2 = models.IntegerField(blank=True, null=True)
+    abierto = models.IntegerField(blank=True, null=True)
     dif1 = models.TextField(blank=True, null=True)  
     dif2 = models.TextField(blank=True, null=True)  
     difr = models.TextField(blank=True, null=True)  

@@ -24,9 +24,17 @@
                     <td>{{ marcador.equipo1 }} VS {{ marcador.equipo2 }}</td>
                     <td align="center">{{ marcador.marcador1 }} - {{ marcador.marcador2 }}</td>
                     {% if marcador.id == None %}
-                      <td align="center"><a href="{% url 'marcador_new' nro_partido=marcador.nro_partido %}">Registrar</a></td>
+                      {% if marcador.abierto == 1 %}
+                          <td align="center"><a href="{% url 'marcador_new' nro_partido=marcador.nro_partido %}">Registrar</a></td>
+                      {% else %}  
+                          <td align="center">Cerrado</td>
+                      {% endif %}
                     {% else %}
-                      <td align="center"><a href="{% url 'marcador_edit' pk=marcador.id %}">Modificar</a></td>
+                      {% if marcador.abierto == 1 %}
+                          <td align="center"><a href="{% url 'marcador_edit' pk=marcador.id %}">Modificar</a></td>
+                      {% else %}  
+                          <td align="center">Cerrado</td>
+                      {% endif %}
                     {% endif %}
                 </tr>
                 {% endfor %}

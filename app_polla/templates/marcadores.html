@@ -23,7 +23,11 @@
                     <td>{{ marcador.fecha }}</th>
                     <td>{{ marcador.equipo1 }} VS {{ marcador.equipo2 }}</td>
                     <td align="center">{{ marcador.marcador1 }} - {{ marcador.marcador2 }}</td>
-                    <td align="center"><a href="{% url 'marcadores_partido' pk=marcador.nro_partido %}">Ver</a></td>
+                    {% if marcador.abierto == 0 %}
+                      <td align="center"><a href="{% url 'marcadores_partido' pk=marcador.nro_partido %}">Ver</a></td>
+                    {% else %}  
+                      <td align="center"></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
 </head>
 <body>
-    <h2>Login</h2>
+    <div align="center"><h1>Copa América 2024</h1></div>
+    <div align="center"><h2>Login</h2></div>
     {% if error %}
         <p>{{ error }}</p>
     {% endif %}
-    <form method="post">
+    <form method="post" align="center">
         {% csrf_token %}
         <label for="username">Usuario:</label><br>
         <input type="text" id="username" name="username"><br>
