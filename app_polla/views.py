@@ -57,6 +57,7 @@ def marcador_new(request, nro_partido):
     usuario = User.objects.get(username=request.user.username)
     usuario = AuthUser.objects.get(id=usuario.id)
     partido = Partido.objects.get(nro_partido=nro_partido)
+    
     if partido.fecha > timezone.now():
         if request.method == 'POST':
             form = MarcadorForm(request.POST)
@@ -100,7 +101,8 @@ def cambio_contrasena(request):
             login(request, usuario)
             message = 'Contraseña cambiada con éxito.'
             success(request, 'Contraseña cambiada con éxito.')
-            return redirect('posiciones')
+            #return redirect('posiciones')
+            return render(request, 'mensaje.html', {})
     else:
         form = PasswordChangeForm(request.user)  # Pass user for initial form
     return render(request, 'cambio_contrasena.html', {'form': form})
