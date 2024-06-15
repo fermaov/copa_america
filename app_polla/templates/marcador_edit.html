@@ -5,6 +5,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Guardar</button>
-        <button href="mis_marcadores">Cancelar</button>
+        <!--a href="{% url 'mis_marcadores' %}">Cancelar</a--> 
+        <button type="reset""><a href="{% url 'mis_marcadores' %}">Cancelar</a></button>
     </form>
 {% endblock %}
