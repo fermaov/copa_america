@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect,  get_object_or_404
 from .models import Partido, Marcador, ViewPosiciones, ViewPartido, AuthUser, ViewCalculo, ViewCuadroHonor, ViewMarcador, ViewPosicionesPlayOff
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import PasswordChangeForm
 from django.db.models import Q
 from .forms import MarcadorForm
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.contrib.messages import success
 
 def posiciones(request):
     posiciones = ViewPosiciones.objects.all()
@@ -89,3 +91,20 @@ def marcador_edit(request, pk):
     else:
         return redirect('mis_marcadores')
     return render(request, 'marcador_edit.html', {'form': form})
+
+def cambio_contrasena(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)  # Pass user and POST data
+        if form.is_valid():
+            usuario = form.save()
+            login(request, usuario)
+            message = 'Contraseña cambiada con éxito.'
+            success(request, 'Contraseña cambiada con éxito.')
+            return redirect('posiciones')
+    else:
+        form = PasswordChangeForm(request.user)  # Pass user for initial form
+    return render(request, 'cambio_contrasena.html', {'form': form})
+
+def logout_view(request):
+    logout(request)  # Logout the user
+    return redirect('login')  # Redirect to the login page
