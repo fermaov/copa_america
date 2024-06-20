@@ -187,8 +187,8 @@ class Marcador(models.Model):
     id = models.IntegerField(primary_key=True)
     usuario = models.ForeignKey('AuthUser', models.DO_NOTHING, db_column='usuario')
     nro_partido = models.ForeignKey('Partido', models.DO_NOTHING, db_column='nro_partido')
-    marcador1 = models.IntegerField(blank=True, null=True)
-    marcador2 = models.IntegerField(blank=True, null=True)
+    marcador1 = models.IntegerField(blank=False, null=True)
+    marcador2 = models.IntegerField(blank=False, null=True)
     fecha_mod = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
