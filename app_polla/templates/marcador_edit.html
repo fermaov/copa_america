@@ -12,11 +12,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const combobox = document.querySelector('select[name="nro_partido"]');
-            //const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
+            combobox.disabled = true;
+            
             combobox.addEventListener('change', function(event) {
                 const selectedValue = event.target.value;
-                console.log('Selected value:', selectedValue);
                 const selectedOption = combobox.options[combobox.selectedIndex];
                 
                 const label1 = document.querySelector('label[for="id_marcador1"]');
