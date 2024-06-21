@@ -80,6 +80,7 @@ class ViewPartido(models.Model):
     marcador1 = models.TextField(blank=True, null=True)
     marcador2 = models.TextField(blank=True, null=True)
     abierto = models.IntegerField(blank=True, null=True)
+    nom_estado = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
