@@ -15,6 +15,7 @@ class MarcadorForm(forms.ModelForm):
             'marcador2': 'Equipo2'
         }
         
+        
 class CambiarContrasenaForm(forms.ModelForm):
     """Formulario para cambiar la contraseña del usuario."""
     contrasena_actual = forms.CharField(

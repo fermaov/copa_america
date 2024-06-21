@@ -12,29 +12,22 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const combobox = document.querySelector('select[name="nro_partido"]');
-            combobox.disabled = true;
-            
-            combobox.addEventListener('change', function(event) {
-                const selectedValue = event.target.value;
-                const selectedOption = combobox.options[combobox.selectedIndex];
-                
-                const label1 = document.querySelector('label[for="id_marcador1"]');
-                const label2 = document.querySelector('label[for="id_marcador2"]');
-                const indice = selectedOption.text.indexOf('VS');
-                const nom1 = selectedOption.text.substring(0,indice-1);
-                const nom2 = selectedOption.text.substring(indice+2);
-                console.log(nom1.padEnd(30, "X"));
-                if (label1) {
-                    // Cambia el texto de la etiqueta
-                    label1.textContent = nom1.padEnd(30, " ") + ':';
-                }
-                if (label2) {
-                    label2.textContent = nom2.padEnd(30, " ") + ':';
-                }
-            });
+            combobox.style.display = 'none';
 
-            const event = new Event('change');
-            combobox.dispatchEvent(event);
+            const selectedOption = combobox.options[combobox.selectedIndex];
+            
+            const label1 = document.querySelector('label[for="id_marcador1"]');
+            const label2 = document.querySelector('label[for="id_marcador2"]');
+            const indice = selectedOption.text.indexOf('VS');
+            const nom1 = selectedOption.text.substring(0,indice-1);
+            const nom2 = selectedOption.text.substring(indice+2);
+            
+            if (label1) {
+                label1.textContent = nom1.padEnd(30, " ") + ':';
+            }
+            if (label2) {
+                label2.textContent = nom2.padEnd(30, " ") + ':';
+            }
         });
     </script>
 {% endblock %}
