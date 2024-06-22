@@ -7,18 +7,29 @@ from .forms import MarcadorForm
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.contrib.messages import success
+import os
+from django.conf import settings
+from django.http import FileResponse
 
 def posiciones(request):
+    queryset = ViewPartido.objects.all().filter(nom_estado='En juego')
+    en_juego = queryset.count()
     posiciones = ViewPosiciones.objects.all()
-    return render(request,'posiciones.html',{'posiciones': posiciones})
+    return render(request,'posiciones.html',{'posiciones': posiciones, 'en_juego':en_juego})
 
 def posiciones_playoff(request):
+    queryset = ViewPartido.objects.all().filter(nom_estado='En juego')
+    en_juego = queryset.count()
     posiciones_playoff = ViewPosicionesPlayOff.objects.all()
-    return render(request,'posiciones_playoff.html',{'posiciones_playoff': posiciones_playoff})
+    return render(request,'posiciones_playoff.html',{'posiciones_playoff': posiciones_playoff, 'en_juego':en_juego})
 
 def marcadores(request):
     marcadores = ViewPartido.objects.all()
     return render(request,'marcadores.html',{'marcadores': marcadores})
+
+def marcadores_chequeo(request):
+    marcadores = ViewPartido.objects.all()
+    return render(request,'marcadores_chequeo.html',{'marcadores': marcadores})
 
 def marcadores_usuario(request, pk):
     usuario = AuthUser.objects.get(id=pk)

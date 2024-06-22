@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-        <h1>Tabla de posiciones PlayOff</h1>
+        
+        {% if en_juego == 0 %}
+          <h1>Tabla de posiciones PlayOffs </h1>
+        {% else %}  
+        <h1>Tabla de Posiciones PlayOffs (Parcial)</h1>
+        {% endif %}
         <table class="table">
             <thead>
               <tr>

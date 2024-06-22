@@ -15,4 +15,5 @@ urlpatterns = [
     path('marcador/edit/<int:pk>',views.marcador_edit, name='marcador_edit'),
     path('cambio_contrasena', views.cambio_contrasena, name='cambio_contrasena'),
     path('logout', views.logout_view, name='logout'),
+    path('marcadores_chequeo',views.marcadores_chequeo, name='marcadores_chequeo'),
 ]

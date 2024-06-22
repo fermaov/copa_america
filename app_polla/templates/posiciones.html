@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-        <h1>Tabla de Posiciones General</h1>
+        {% if en_juego == 0 %}
+          <h1>Tabla de Posiciones General</h1>
+        {% else %}  
+        <h1>Tabla de Posiciones General (Parcial)</h1>
+        {% endif %}
+        
         <table class="table">
             <thead>
               <tr>
