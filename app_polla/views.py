@@ -77,20 +77,25 @@ def marcador_new(request, nro_partido):
     
     if partido.fecha > timezone.now():
         if request.method == 'POST':
-            form = MarcadorForm(request.POST)
-            if form.is_valid():
-                marcador = form.save(commit=False)
-                marcador.usuario = usuario
-                marcador.nro_partido = partido
-                marcador.fecha_mod = timezone.now()
-                marcador.save()
-                # Redirige a una página de éxito o a donde desees después de guardar los datos
+            try:
+                marcador_existe = Marcador.objects.get(usuario=request.user.id, nro_partido=nro_partido)
                 return redirect('mis_marcadores')
+            except Marcador.DoesNotExist:
+                form = MarcadorForm(request.POST)
+                if form.is_valid():
+                    marcador = form.save(commit=False)
+                    marcador.usuario = usuario
+                    marcador.nro_partido = partido
+                    marcador.fecha_mod = timezone.now()
+                    marcador.save()
+                    # Redirige a una página de éxito o a donde desees después de guardar los datos
+                    return redirect('mis_marcadores')
+            
         else:
             form = MarcadorForm(instance=partido)
     else:
         return redirect('mis_marcadores')
-    return render(request, 'marcador_edit.html', {'form': form})
+    return render(request, 'marcador_edit.html', {'form': form})    
         
 def marcador_edit(request, pk):
     #marcador = get_object_or_404(Marcador, pk=pk)
