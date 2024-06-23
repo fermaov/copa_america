@@ -37,8 +37,14 @@ def marcadores_usuario(request, pk):
     return render(request,'marcadores_usuario.html',{'marcadores_usuario': marcadores_usuario, 'usuario' : usuario})
 
 def marcadores_partido(request, pk):
+    partido =  ViewPartido.objects.get(nro_partido=pk)    
     marcadores_partido = ViewCalculo.objects.all().filter(nro_partido=pk).order_by('marcador1','marcador2')
-    return render(request,'marcadores_partido.html',{'marcadores_partido': marcadores_partido})    
+    return render(request,'marcadores_partido.html',{'marcadores_partido': marcadores_partido, 'partido': partido}) 
+
+def marcadores_partido_chequeo(request, pk):
+    partido =  ViewPartido.objects.get(nro_partido=pk)    
+    marcadores_partido = ViewCalculo.objects.all().filter(nro_partido=pk).order_by('marcador1','marcador2')
+    return render(request,'marcadores_partido_chequeo.html',{'marcadores_partido': marcadores_partido, 'partido': partido})    
 
 def cuadro_honor(request):
     cuadro_honor = ViewCuadroHonor.objects.all().order_by('nom_campeon','nom_subcampeon','nom_tercero','nom_cuarto')
