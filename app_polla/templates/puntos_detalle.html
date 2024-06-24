@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+        <h2>{{ calculo.nom_usuario }}</h2>
+        <h3>Resultado: {{ calculo.equipo1 }}: {{ calculo.resultado1 }} {{ calculo.equipo2 }}: {{ calculo.resultado2 }}</h3>
+        <h3>Marcador: {{ calculo.equipo1 }}: {{ calculo.marcador1 }} {{ calculo.equipo2 }}: {{ calculo.marcador2 }}</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Puntos</th>                
+              </tr>
+            </thead>
+            <tbody>
+                {% if calculo.abierto == 0 %}
+                  <tr>
+                  {% if calculo.tendencia == 0 %}
+                    <td>No acertó la tendencia del partido (ganador o empate)</td>
+                    <td>{{ calculo.tendencia }} Puntos</td>     
+                  {% else %}
+                    <td>Acertó la tendencia del partido (ganador o empate)</td>
+                    <td>{{ calculo.tendencia }} Puntos</td>       
+                  {% endif %}                                         
+                  </tr>
+                  <tr>
+                  {% if calculo.goles1 == 0 %}
+                    <td>No acertó el número de goles anotados por {{ calculo.equipo1 }}</td>
+                    <td>{{ calculo.goles1 }} Puntos</td>    
+                  {% else %}
+                    <td>Acertó el número de goles anotados por {{ calculo.equipo1 }}</td>
+                    <td>{{ calculo.goles1 }} Puntos</td>   
+                  {% endif %}
+                  </tr>
+                  <tr>
+                  {% if calculo.goles2 == 0 %}
+                    <td>No acertó el número de goles anotados por {{ calculo.equipo2 }}</td>
+                    <td>{{ calculo.goles2 }} Puntos</td>    
+                  {% else %}
+                    <td>Acertó el número de goles anotados por {{ calculo.equipo2 }}</td>
+                    <td>{{ calculo.goles2 }} Puntos</td>   
+                  {% endif %}                     
+                  </tr>
+                  <tr>
+                  {% if calculo.difgol == 0 %}
+                    <td>No acertó la diferencia de gol</td>
+                    <td>{{ calculo.difgol }} Puntos</td>     
+                  {% else %}
+                    <td>Acertó la diferencia de gol</td>
+                    <td>{{ calculo.difgol }} Puntos</td>       
+                  {% endif %}                      
+                  </tr>
+                  <tr>
+                    <td>TOTAL PUNTOS</td>
+                    <td>{{ calculo.puntos }} Puntos</td>                      
+                  </tr>
+                {% endif %}
+            </tbody>
+          </table>
+          <a href="#" onclick="window.history.back()">Volver</a>
+    </body>
+</html>
+{% endblock %}

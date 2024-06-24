@@ -17,4 +17,5 @@ urlpatterns = [
     path('logout', views.logout_view, name='logout'),
     path('marcadores_chequeo',views.marcadores_chequeo, name='marcadores_chequeo'),
     path('marcadores_partido_chequeo/<int:pk>',views.marcadores_partido_chequeo, name='marcadores_partido_chequeo'),
+    path('puntos_detalle/<int:usuario>/<int:nro_partido>',views.puntos_detalle, name='puntos_detalle'),
 ]

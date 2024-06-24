@@ -132,3 +132,7 @@ def cambio_contrasena(request):
 def logout_view(request):
     logout(request)  # Logout the user
     return redirect('login')  # Redirect to the login page
+
+def puntos_detalle(request, usuario, nro_partido):
+    calculo =  ViewCalculo.objects.get(usuario=usuario, nro_partido=nro_partido)    
+    return render(request,'puntos_detalle.html',{'calculo': calculo}) 

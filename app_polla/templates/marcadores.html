@@ -17,10 +17,10 @@
             <tbody>
                 {% for marcador in marcadores %}
                 <tr>
-                    <td>{{ marcador.nro_partido }}</th>
-                    <td>{{ marcador.nom_fase }}</th>
-                      <td>{{ marcador.nro_fecha }}</th>
-                    <td>{{ marcador.fecha }}</th>
+                    <td>{{ marcador.nro_partido }}</td>
+                    <td>{{ marcador.nom_fase }}</td>
+                    <td>{{ marcador.nro_fecha }}</td>
+                    <td>{{ marcador.fecha }}</td>
                     <td>{{ marcador.equipo1 }} VS {{ marcador.equipo2 }}</td>
                     <td align="center">{{ marcador.marcador1 }} - {{ marcador.marcador2 }} <br>{{ marcador.nom_estado }}</td>
                     {% if marcador.abierto == 0 %}

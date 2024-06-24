@@ -18,13 +18,14 @@
                 {% for marcador in marcadores_partido %}
                   {% if marcador.abierto == 0 %}
                     <tr>
-                        <td>{{ marcador.nro_partido }}</th>
-                        <td>{{ marcador.nom_fase }}</th>                    
+                        <td>{{ marcador.nro_partido }}</td>
+                        <td>{{ marcador.nom_fase }}</td>                    
                         <td>{{ marcador.equipo1 }} VS {{ marcador.equipo2 }}</td>
-                        <td>{{ marcador.nom_usuario }}</th>
+                        <td>{{ marcador.nom_usuario }}</td>
                         <td align="center">{{ marcador.marcador1 }} - {{ marcador.marcador2 }}</td>
                         <td align="center">{{ marcador.resultado1 }} - {{ marcador.resultado2 }}</td>
-                        <td align="center">{{ marcador.puntos }}</th>
+                        <!--td align="center">{{ marcador.puntos }}</th-->
+                        <td align="center"><a href="{% url 'puntos_detalle' usuario=marcador.usuario nro_partido=marcador.nro_partido %}">{{ marcador.puntos }}</a></td>
                     </tr>
                   {% endif %}
                 {% endfor %}
