@@ -28,7 +28,11 @@
                 {% endfor %}
             </tbody>
           </table>   
-          <a href="{% url 'posiciones' %}">Volver</a>     
+          {% if play == 0 %}
+            <a href="{% url 'posiciones' %}">Volver</a>
+          {% else %}
+            <a href="{% url 'posiciones_playoff' %}">Volver</a>
+          {% endif %}
     </body>
 </html>
 {% endblock %}

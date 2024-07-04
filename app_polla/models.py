@@ -62,6 +62,7 @@ class ViewPosiciones(models.Model):
     puntos_5 = models.BigIntegerField(blank=True, null=True)
     puntos_3 = models.BigIntegerField(blank=True, null=True)
     puntos_0 = models.BigIntegerField(blank=True, null=True)
+    puntos_col = models.BigIntegerField(blank=True, null=True)
 
     def __str__(self):
         return "%s  %s  %s  %s" % (self.num, self.nom_usuario, self.puntos, self.puntos_5)
@@ -208,6 +209,7 @@ class ViewPosicionesPlayOff(models.Model):
     puntos_5 = models.BigIntegerField(blank=True, null=True)
     puntos_3 = models.BigIntegerField(blank=True, null=True)
     puntos_0 = models.BigIntegerField(blank=True, null=True)
+    puntos_col = models.BigIntegerField(blank=True, null=True)
 
     def __str__(self):
         return "%s  %s  %s  %s" % (self.num, self.nom_usuario, self.puntos, self.puntos_5)

@@ -28,7 +28,7 @@
                     <td align="center">{{ posicion.puntos_5 }}</td>
                     <!--td align="center">{{ posicion.puntos_3 }}</td-->
                     <!--td align="center">{{ posicion.puntos_0 }}</td-->
-                    <td align="center"><a href="{% url 'marcadores_usuario' pk=posicion.usuario %}">Ver</a></td>
+                    <td align="center"><a href="{% url 'marcadores_usuario' pk=posicion.usuario play=1%}">Ver</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

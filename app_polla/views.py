@@ -31,10 +31,14 @@ def marcadores_chequeo(request):
     marcadores = ViewPartido.objects.all()
     return render(request,'marcadores_chequeo.html',{'marcadores': marcadores})
 
-def marcadores_usuario(request, pk):
+def marcadores_usuario(request, pk, play):
     usuario = AuthUser.objects.get(id=pk)
-    marcadores_usuario = ViewCalculo.objects.all().filter(usuario=pk).order_by('nro_partido')
-    return render(request,'marcadores_usuario.html',{'marcadores_usuario': marcadores_usuario, 'usuario' : usuario})
+    if play == 0:
+        marcadores_usuario = ViewCalculo.objects.all().filter(usuario=pk).order_by('nro_partido')
+        return render(request,'marcadores_usuario.html',{'marcadores_usuario': marcadores_usuario, 'usuario' : usuario, 'play':0})
+    else:
+        marcadores_usuario = ViewCalculo.objects.all().exclude(nom_fase='Fase de Grupos').filter(usuario=pk).order_by('nro_partido')
+        return render(request,'marcadores_usuario.html',{'marcadores_usuario': marcadores_usuario, 'usuario' : usuario, 'play':1})
 
 def marcadores_partido(request, pk):
     partido =  ViewPartido.objects.get(nro_partido=pk)    
